@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        My Blog Page
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css" />
+
+    {% block script %}
+    {% endblock %}
+
+    <style>
+        * {
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        #main-wrapper {
+            margin: 60px 0;
+            height: auto;
+            min-height: 100%;
+            padding-bottom: 266px;
+        }
+
+        footer {
+            height: 266px;
+            position: relative;
+            transform: translateY(-100%);
+            width: 100%;
+            padding: 60px 0;
+            background: #252629;
+        }
+
+        #contact_info * {
+            color: #96989c;
+            font-size: 14px;
+        }
+
+        footer .footer_logo {
+            padding-bottom: 24px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .admin {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+
+    {% block extra-style %}
+    {% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span class="mx-4 mb-2 mt-2">
+            <li class="nav-item btn">
+                <a class="navbar-brand font-weight-bold font-italic" href="{% url 'home' %}">HOME</a>
+            </li>
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item mx-1 btn">
+                    <a class="nav-link text-white" href="{% url 'photo:index' %}">Python</a>
+                </li>
+
+                <li class="nav-item mx-1 btn">
+                    <a class="nav-link text-white" href="{% url 'admin:index' %}">Admin</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav mx-5">
+                <li class="nav-item dropdown mx-1 btn btn-dark">
+                    {% if user.is_active %}
+                    <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
+                        <img class="admin" src="{% static 'img/admin.png' %}" alt="...">
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+                    </div>
+                    {% else %}
+                    <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
+                        <img class="admin" src="{% static 'img/admin.png' %}" alt="...">
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                        <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                    </div>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="main-wrapper">
+        <div id="main-content" class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer_logo">My Blog</div>
+            <div id="contact_info">
+                <p>
+                    <a class="text-decoration-none" href="tel:+821090940469"><i
+                            class="fa-solid fa-phone"></i>&emsp;010-9094-0469</a>
+                    <br>
+                    <a class="text-decoration-none" href="mailto:dlfhrnt86@gmail.com"><i
+                            class="fa-solid fa-envelope"></i>&emsp;dlfhrnt86@gmail.com</a>
+                </p>
+            </div>
+            <p style="color:#646873">Copyright © <b>MIN JAE KIM</b> All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+{% block extra-script %}
+{% endblock %}
+</html>

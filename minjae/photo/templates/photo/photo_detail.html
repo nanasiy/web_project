@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Project Description
+{% endblock %}
+
+{% block extra-style %}
+{% endblock %}
+
+{% block script %}
+<style>
+    h3 {
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-weight: 700;
+        line-height: 1.2;
+        font-size: 40px;
+        padding: 10px;
+        text-transform: uppercase;
+        text-rendering: optimizeLegibility;
+        color: #2c2c2c;
+        letter-spacing: .05em;
+    }
+
+    p {
+        font-size: 1.2rem;
+        font-weight: 300;
+        line-height: 1.1;
+        display: block;
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    .featured-text {
+        padding: 0 0 0 2rem;
+        border-left: 0.5rem solid gray;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h3 class="mt-5">{{ object.title }}</h3>
+<hr style="margin: 20px 20px 20px 0;">
+<div class="row  align-items-center">
+    <div class="col-md-6">
+        <a href="{{ object.image.url }}">
+            <img src="{{ object.image.url }}" style="width: 100%;
+                border: 3px solid gray;
+                border-radius: 10px;
+                -moz-border-radius: 10px;
+                -khtml-border-radius: 10px;
+                -webkit-border-radius: 10px;" 
+                alt="{{ photo }}">
+        </a>
+        <a>업로드 : {{ photo.upload_dt|date:"Y-m-d" }}</a>
+    </div>
+
+    <ul class="col-md-6 mb-5 featured-text">
+        <li class="h5">프로젝트 내용</li>
+        {% if object.description %}
+        <p>{{ object.description|linebreaks }}</p>
+        {% else %}
+        <p>(blank)</p>
+        {% endif %}
+        <li class="h5">참고 사이트</li>
+        <a href="{{ object.data }}">{{ object.data }}</a>
+    </ul>
+</div>
+{% endblock %}

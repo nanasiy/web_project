@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+My Blog Main Page
+{% endblock %}
+
+{% block extra-style %}
+<style>
+    .cube {
+        animation: rotate 7000ms linear infinite;
+        bottom: 0;
+        height: 150px;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        transform-style: preserve-3d;
+        right: 0;
+        top: -150px;
+        width: 150px;
+    }
+
+    @keyframes rotate {
+        100% {
+            transform: rotateY(360deg) rotateX(720deg) rotateZ(1080deg);
+        }
+    }
+
+    .face {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .front {
+        background: #333;
+        transform: translateZ(75px);
+    }
+
+    .back {
+        background: #444;
+        transform: translateZ(-75px);
+    }
+
+    .left {
+        background: #555;
+        transform: translateX(-75px) rotateY(90deg);
+    }
+
+    .right {
+        background: #666;
+        transform: translateX(75px) rotateY(90deg);
+    }
+
+    .top {
+        background: #777;
+        transform: translateY(-75px) rotateX(90deg);
+    }
+
+    .bottom {
+        background: #888;
+        transform: translateY(75px) rotateX(90deg);
+    }
+
+    .home {
+        height: 650px;
+        border-top: 10px solid #ccc;
+        border-bottom: 10px solid #ccc;
+        padding: 20px 0 0 20px;
+
+    }
+
+    h3 {
+        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+        font-size: 55px;
+        padding: 100px;
+        text-align: center;
+        text-transform: uppercase;
+        text-rendering: optimizeLegibility;
+
+        color: #2c2c2c;
+        letter-spacing: .05em;
+        text-shadow:
+            4px 4px 0px #d5d5d5,
+            7px 7px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    h4 {
+        font-size: calc(1.275rem + 0.3vw);
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    p {
+        --bs-text-opacity: 1;
+        color: #6c757d;
+        line-height: 1.75;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        padding-left: 20;
+        padding-right: 20;
+        text-align:justify;
+    }
+
+    img {
+        height: 150px;
+        width: 150px;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="home">
+    <div class="cube">
+        <div class="face front"></div>
+        <div class="face back"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+    </div>
+</div>
+
+<hr style="margin: 10px 0">
+
+<div class="container">
+    <div class="text-center">
+        <h3>Data Visualization Project</h3>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <span>
+                <img src="{% static 'img/iot.png' %}" alt="...">
+            </span>
+            <h4>Iot</h4>
+            <p>정보통신기술 기반으로 모든 사물을 연결해 사람과 사물, 사물과 사물간에 정보를 교류하고 상호 소통하는 지능형 인프라 및 서비스 기술
+                IoT는 감지 가능하고 프로그래밍 가능한, 지능적이며 보이지 않는 네트워크망을 구성한다. IoT제품들은 서로간에, 혹은 인터넷과 직접적, 혹은 간접적으로 통신할 수 있는 임베디드기술을
+                사용한다.</p>
+        </div>
+        <div class="col-md-3">
+            <span>
+                <img src="{% static 'img/클라우딩.png' %}" alt="...">
+            </span>
+            <h4>Cloud</h4>
+            <p>단말기 사이에 있는 컴퓨터 통신망이 복잡한 네트워크 및 서버 구성 등을 알 필요 없이 구름과 같이 내부가 보이지 않고,
+                일반 사용자는 이 복잡한 내부를 굳이 알 필요도 없이 어디에서나 구름 속의 컴퓨터 자원으로 자기가 원하는 작업을 할 수 있다는 것이다. 이른바 동일한 체험을, 인터넷이 연결된 어디에서나
+                보장해주는 것이다.</p>
+        </div>
+        <div class="col-md-3">
+            <span>
+                <img src="{% static 'img/빅데이터.png' %}" alt="...">
+            </span>
+            <h4>BigData</h4>
+            <p>매우 사소한 정보까지도 디지털 정보로 기록, 거기에 더해 단순한 문자 데이터에서 벗어나 녹음, 사진, 동영상 등 데이터의 종류가 다양해졌다.
+                이런 빅 데이터는 기존의 기술이나 도구로는 원활한 수집과 처리가 불가능할 정도로 성질이 달라졌으므로 빅 데이터에서 유용한 정보를 추합하거나 가치를 뽑아내기 위해서 고안된 기술</p>
+        </div>
+        <div class="col-md-3">
+            <span>
+                <img src="{% static 'img/모바일.png' %}" alt="...">
+            </span>
+            <h4>Mobile</h4>
+            <p>모바일 기술은 사용자를 따라다니는 기술을 말한다. 모바일 기술은 양방향 통신 디바이스, 컴퓨팅 디바이스, 그리고 이들을 연결하는 네트워킹 기술로 구성되어
+                최종 사용자에게 서비스를 전달하는 수단으로 스마트폰, 드론, 자율주행자동차 등 사용자에게 서비스를 최종적으로 제공하는 기기 모두를 모바일로 정의할 수 있다.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

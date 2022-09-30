@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Category
+{% endblock %}
+
+{% block extra-style %}
+<style>
+    .home {
+        height: 250px;
+        border-top: 10px solid #ccc;
+        border-bottom: 10px solid #ccc;
+        padding: 20px 0 0 20px;
+        background-image: url("{% static 'img/data.png' %}");
+        background-size: cover;
+        opacity: 0.6;
+    }
+
+    .home h1 {
+        color: #fff;
+        text-align: center;
+        font-size: 60px;
+        padding: 60px 0;
+    }
+
+    .h2 {
+        cursor: pointer;
+        font-size: 40px;
+        -webkit-text-stroke-color: rgb(50, 50, 50);
+        -webkit-text-stroke-width: 0.02em;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        background-repeat: no-repeat;
+        transition: background-size .5s cubic-bezier(0.67, 0.01, 0.15, 0.98);
+        background-image: linear-gradient(135deg, rgb(50, 50, 50) 0%, rgb(50, 50, 50) 50%, transparent 50.1%);
+        background-size: 0% 100%;
+    }
+
+    .h2:hover {
+        background-size: 220% 100%;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="home">
+    <h1>Category</h1>
+</div>
+{% for item in object_list %}
+<div class="mt-5 text-center">
+    <a class="h2" href="{% url 'photo:album_detail' item.id %}">{{ item.name }}</a>&emsp;
+</div>
+{% endfor %}
+
+{% if user.is_active %}
+<div class="mt-5 text-center">
+    <a class="h2" href="{% url 'photo:album_add' %}">
+        <span class="thick">카테고리 생성</span>
+    </a>
+    <a class="h2" href="{% url 'photo:album_change' %}">
+        <span class="thick">카테고리 수정</span>
+    </a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra-script %}
+{% endblock %}

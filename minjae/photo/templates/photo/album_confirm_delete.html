@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Category Delete
+{% endblock %}
+
+{% block extra-style %}
+{% endblock %}
+
+{% block content %}
+    <h1>Category Delete</h1>
+    <br>
+    
+    <form method="post">{% csrf_token %}
+        <p>카테고리 "{{ object }}"을/를 삭제하면, 그 안의 모든 프로젝트들도 삭제됩니다.</p>
+        <input type="submit" value="Confirm" class="btn btn-danger btn-sm" />
+    </form>
+{% endblock %}
+
+{% block extra-script %}
+{% endblock %}

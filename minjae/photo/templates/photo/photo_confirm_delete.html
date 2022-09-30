@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Project Delete
+{% endblock %}
+
+{% block extra-style %}
+{% endblock %}
+
+{% block content %}
+    <h1>Project Delete</h1>
+    <br>
+    
+    <form method="post"> {% csrf_token %}
+        <p>프로젝트 "{{ object }}"을/를 삭제 하시겠어요?</p>
+        <input type="submit" value="Confirm" class="btn btn-danger btn-sm" />
+    </form>
+{% endblock %}
+
+{% block extra-script %}
+{% endblock %}
